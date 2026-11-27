@@ -70,11 +70,21 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-un: var(--un);
+  --color-gold: var(--gold);
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Manrope", system-ui, sans-serif;
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --radius: 0.75rem;
+  --navy: oklch(0.29 0.08 255);
+  --navy-foreground: oklch(0.98 0.01 240);
+  --un: oklch(0.62 0.13 240);
+  --gold: oklch(0.78 0.14 80);
+  --background: oklch(0.985 0.006 240);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);
@@ -154,3 +164,17 @@
     color: var(--color-foreground);
   }
 }
+
+.kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--un); }
+.card-un { border-radius: var(--radius); background: var(--card); border: 1px solid var(--border); border-top: 4px solid var(--gold); padding: 1.25rem; box-shadow: 0 12px 30px -18px color-mix(in oklab, var(--navy) 45%, transparent); animation: rise .5s ease both; }
+.icon-btn { border-radius: 9999px; padding: .5rem; transition: background .2s; }
+.icon-btn:hover, .icon-btn[aria-pressed="true"] { background: color-mix(in oklab, var(--navy-foreground) 18%, transparent); }
+.nav-btn { display: inline-flex; align-items: center; gap: .25rem; border-radius: 9999px; background: var(--navy); color: var(--navy-foreground); padding: .6rem 1rem; font-weight: 600; transition: opacity .2s, transform .2s; }
+.nav-btn:hover:not(:disabled) { transform: translateY(-1px); }
+.nav-btn:disabled { opacity: .35; cursor: not-allowed; }
+.slide-enter { animation: fade .45s ease both; }
+@keyframes fade { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: none; } }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .slide-enter, .card-un, .animate-\[spin_60s_linear_infinite\] { animation: none !important; } }
+body { font-family: var(--font-sans); }
+.stroke-gold { stroke: var(--gold); }

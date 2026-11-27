@@ -28,3 +28,6 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+- Presentation slide content lives in src/components/deck/slides.ts and renders at / with ?slide=N as the current-slide source of truth; why: edit content in one place and keep links/refresh on the same slide.
